@@ -1,3 +1,8 @@
+package Model;
+
+
+import Model.Produto;
+
 
 final public class Linha extends Produto implements Calc{
 	private int comprimento;

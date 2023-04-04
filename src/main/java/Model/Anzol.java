@@ -1,3 +1,5 @@
+package Model;
+
 
 final public class Anzol extends Produto{
 	private int tamanho;

@@ -1,4 +1,8 @@
+package Model;
 
+
+import Model.Vara;
+import Model.Anzol;
 import javax.swing.JOptionPane;
 
 

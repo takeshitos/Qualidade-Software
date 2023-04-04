@@ -1,4 +1,9 @@
+package View;
 
+
+import Model.BdVara;
+import Model.UniLotePeqException;
+import Model.Vara;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

@@ -1,3 +1,5 @@
+package Model;
+
 
 abstract public class Produto{
 	private String marca;

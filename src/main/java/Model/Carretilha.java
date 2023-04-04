@@ -1,3 +1,8 @@
+package Model;
+
+
+import Model.Produto;
+
 
 final public class Carretilha extends Produto{
 	private int capLinha;

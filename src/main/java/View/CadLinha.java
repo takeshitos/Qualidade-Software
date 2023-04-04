@@ -1,4 +1,9 @@
+package View;
 
+
+import Model.Linha;
+import Model.BdLinha;
+import Model.UniLotePeqException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

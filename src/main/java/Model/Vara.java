@@ -1,3 +1,5 @@
+package Model;
+
 
 final public class Vara extends Produto implements Calc{
 	private float tamanho;

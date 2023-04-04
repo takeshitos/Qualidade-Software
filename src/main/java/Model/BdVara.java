@@ -1,4 +1,8 @@
+package Model;
 
+
+import Model.UniLotePeqException;
+import Model.Vara;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

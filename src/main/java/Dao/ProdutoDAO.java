@@ -471,4 +471,85 @@ public class ProdutoDAO {
         }
         
     }
+    
+    public static void carregaTabCarretilha(DefaultTableModel modelo) {
+        ResultSet rs = null;
+        
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteCar"),
+                    rs.getInt("uniLoteCar"), 
+                    rs.getString("modeloCar")
+                }); 
+            }
+
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        
+    }
+    
+    public static void carregaTabLinha(DefaultTableModel modelo) {
+        ResultSet rs = null;
+        
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM linha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteLinha"),
+                    rs.getInt("uniLoteLinha"), 
+                    rs.getString("modeloLinha")
+                }); 
+            }
+
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        
+    }
+    
+    public static void carregaTabVara(DefaultTableModel modelo) {
+        ResultSet rs = null;
+        
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM vara");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteVara"),
+                    rs.getInt("uniLoteVara"), 
+                    rs.getString("modeloVara")
+                }); 
+            }
+
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        
+    }
+    
+    public static void carregaTabTotal(DefaultTableModel modelo) {
+        ResultSet rs = null;
+        
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteCar"),
+                    rs.getInt("uniLoteCar"), 
+                    rs.getString("modeloCar")
+                }); 
+            }
+
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        
+    }
+    
 }

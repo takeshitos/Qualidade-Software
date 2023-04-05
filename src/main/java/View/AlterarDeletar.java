@@ -1,6 +1,8 @@
 package View;
 
 
+import Controller.ControllerAnzol;
+import Controller.ControllerCarretilha;
 import Model.BdCarretilha;
 import Model.Carretilha;
 import Model.BdVara;
@@ -9,6 +11,7 @@ import Model.Linha;
 import Model.BdLinha;
 import Model.Vara;
 import Model.Anzol;
+import Model.UniLotePeqException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -365,6 +368,10 @@ public class AlterarDeletar extends javax.swing.JFrame {
     public void listaTab(){
         DefaultTableModel modelo = (DefaultTableModel) tbProd.getModel();
         
+        modelo.setNumRows(0);
+        
+        ControllerAnzol.carregaTabela(modelo);
+        /*
         int posLin = 0;
         modelo.setRowCount(posLin);
         
@@ -388,7 +395,7 @@ public class AlterarDeletar extends javax.swing.JFrame {
         for(Vara v : bdv.getBdVara()){
             modelo.insertRow(posLin, new Object[]{v.mostraClasse(), v.getCodigoLote(), v.getUnidadesLote(),v.getMarca(),v.getModelo(), v.getPreco()});
             posLin++;
-        }
+        }*/
     }
     
     public void altAnzol(){
@@ -417,11 +424,11 @@ public class AlterarDeletar extends javax.swing.JFrame {
       limpar();
     }
     
-    public void altCarretilha(){
+    public void altCarretilha() throws UniLotePeqException{
       c = new Carretilha();
       c.setCodigoLote(Integer.parseInt(jtCodigoAlt.getText()));
       
-      c = bdc.atualizaCarretilha(c);
+      c = ControllerCarretilha.atualizaCarretilha(c);
        
       if(c != null){
             JOptionPane.showMessageDialog(

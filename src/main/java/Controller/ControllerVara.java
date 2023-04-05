@@ -7,6 +7,8 @@ package Controller;
 import Dao.ProdutoDAO;
 import Model.UniLotePeqException;
 import Model.Vara;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,8 +18,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControllerVara {
     
+    public static Vara consulta(Vara a){
+        try {
+            return (Vara) ProdutoDAO.pesquisaProdID(a);
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(ControllerVara.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
     public static boolean verifica(Vara a){
-        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "vara");
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "vara", "idLoteVara");
     }
     
     public static Vara atualizaVara(Vara v) throws UniLotePeqException{

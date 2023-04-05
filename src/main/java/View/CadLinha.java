@@ -377,7 +377,7 @@ public class CadLinha extends javax.swing.JFrame {
         }
         l.setMarca(jtMarca.getText());
         l.setModelo(jtModelo.getText());
-        l.setPreco(Float.valueOf(jtPreco.getText()));
+        l.setPreco(Double.valueOf(jtPreco.getText()));
         l.setComprimento((jtComprimento.getText()));
         l.setEspessura(jtEspessura.getText());
         l.setResistencia((jtResistencia.getText()));

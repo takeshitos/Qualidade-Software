@@ -576,13 +576,13 @@ public class Relatorio extends javax.swing.JFrame {
         
         DefaultTableModel modelo2 = (DefaultTableModel) tbCarretilha.getModel();
         modelo2.setNumRows(0);
-        ControllerCarretilha.carregaTabelaFull(modelo);
+        ControllerCarretilha.carregaTabelaFull(modelo2);
         DefaultTableModel modelo3 = (DefaultTableModel) tbLinha.getModel();
         modelo3.setNumRows(0);
-        ControllerLinha.carregaTabelaFull(modelo);
+        ControllerLinha.carregaTabelaFull(modelo3);
         DefaultTableModel modelo4 = (DefaultTableModel) tbVara.getModel();
         modelo4.setNumRows(0);
-        ControllerVara.carregaTabelaFull(modelo);
+        ControllerVara.carregaTabelaFull(modelo4);
     }   
 
  
@@ -590,14 +590,14 @@ public class Relatorio extends javax.swing.JFrame {
     public void consulAnzol(){
         a = new Anzol();
         a.setCodigoLote(Integer.parseInt(jtCodigo.getText()));
-        a = bda.consAnzol(a);
+        a = ControllerAnzol.consulta(a);
         
         if(a != null){
             jtMostraCodigo.setText(Integer.toString(a.getCodigoLote()));
             jtMostraUni.setText(Integer.toString(a.getUnidadesLote()));
             jtMostraMarca.setText(a.getMarca());
             jtMostraModelo.setText(a.getModelo());
-            jtMostraPreco.setText(Float.toString(a.getPreco()));
+            jtMostraPreco.setText(Double.toString(a.getPreco()));
         }
         else{
                   JOptionPane.showMessageDialog(
@@ -613,14 +613,14 @@ public class Relatorio extends javax.swing.JFrame {
     public void consulCarretilha(){
         c = new Carretilha();
         c.setCodigoLote(Integer.parseInt(jtCodigo.getText()));
-        c = bdc.consCarretilha(c);
+        c = ControllerCarretilha.consulta(c);
         
         if(c != null){
             jtMostraCodigo.setText(Integer.toString(c.getCodigoLote()));
             jtMostraUni.setText(Integer.toString(c.getUnidadesLote()));
             jtMostraMarca.setText(c.getMarca());
             jtMostraModelo.setText(c.getModelo());
-            jtMostraPreco.setText(Float.toString(c.getPreco()));
+            jtMostraPreco.setText(Double.toString(c.getPreco()));
         }
         else{
                   JOptionPane.showMessageDialog(
@@ -636,14 +636,14 @@ public class Relatorio extends javax.swing.JFrame {
     public void consulLinha(){
         l = new Linha();
         l.setCodigoLote(Integer.parseInt(jtCodigo.getText()));
-        l = bdl.consLinha(l);
+        l = ControllerLinha.consulta(l);
         
         if(l != null){
             jtMostraCodigo.setText(Integer.toString(l.getCodigoLote()));
             jtMostraUni.setText(Integer.toString(l.getUnidadesLote()));
             jtMostraMarca.setText(l.getMarca());
             jtMostraModelo.setText(l.getModelo());
-            jtMostraPreco.setText(Float.toString(l.getPreco()));
+            jtMostraPreco.setText(Double.toString(l.getPreco()));
         }
         else{
                   JOptionPane.showMessageDialog(
@@ -659,14 +659,14 @@ public class Relatorio extends javax.swing.JFrame {
     public void consulVara(){
         v = new Vara();
         v.setCodigoLote(Integer.parseInt(jtCodigo.getText()));
-        v = bdv.consVara(v);
+        v = ControllerVara.consulta(v);
         
         if(v != null){
             jtMostraCodigo.setText(Integer.toString(v.getCodigoLote()));
             jtMostraUni.setText(Integer.toString(v.getUnidadesLote()));
             jtMostraMarca.setText(v.getMarca());
             jtMostraModelo.setText(v.getModelo());
-            jtMostraPreco.setText(Float.toString(v.getPreco()));
+            jtMostraPreco.setText(Double.toString(v.getPreco()));
         }
         else{
                   JOptionPane.showMessageDialog(

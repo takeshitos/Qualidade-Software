@@ -191,7 +191,7 @@ public class ProdutoDAO {
 
         } else if (p.getClass().getSimpleName().equalsIgnoreCase("LINHA")) {
             Linha l = (Linha) p;
-            String query = "UPDATE linha set uniLoteLinha = ?, marcaLinha = ?, modeloLinha = ?, precoLinha = ?, compriLinha = ?, espLinha = ?, resisLinha = ?, corLinha = ?, fabriLinha = ? WHERE idLoteLinha = ?";
+            String query = "UPDATE linha set uniLoteLinha = ?, marcaLinha = ?, modeloLinha = ?, precoLinha = ?, compriLinha = ?, espLinha = ?, resistLinha = ?, corLinha = ?, fabriLinha = ? WHERE idLoteLinha = ?";
             PreparedStatement pstm;
 
             try {           
@@ -249,15 +249,15 @@ public class ProdutoDAO {
         return false;
     }
       
-    public static boolean pesquisarProdutoId(String Id, String tipo) {
+    public static boolean pesquisarProdutoId(String Id, String tipo, String coluna) {
         
-        ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE idLoteAnzol = '" + Id+ "'");            
+        ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE "+coluna+" = '" + Id+ "'");            
         
         try{
-            if (pesquisa.isBeforeFirst()) 
+            if (pesquisa.isAfterLast()){
                 return false; //Tem id
 
-            else
+            }else
                 return true; //Tem não id
         }catch (Exception e) {
             return false; //Deu erro, mas coloca que tem (evitar bug)
@@ -391,7 +391,7 @@ public class ProdutoDAO {
 
             return false;
         }else if(p.getClass().getSimpleName().equalsIgnoreCase("CARRETILHA")){
-            String query = "DELETE FROM carretilha WHERE idLoteAnzol = ?";
+            String query = "DELETE FROM carretilha WHERE idLoteCar = ?";
             PreparedStatement pstm;
 
             try {
@@ -409,7 +409,7 @@ public class ProdutoDAO {
 
             return false;
         }else if(p.getClass().getSimpleName().equalsIgnoreCase("LINHA")){
-            String query = "DELETE FROM linha WHERE idLoteAnzol = ?";
+            String query = "DELETE FROM linha WHERE idLoteLinha = ?";
             PreparedStatement pstm;
 
             try {
@@ -427,7 +427,7 @@ public class ProdutoDAO {
 
             return false;
         }else if(p.getClass().getSimpleName().equalsIgnoreCase("VARA")){
-            String query = "DELETE FROM vara WHERE idLoteAnzol = ?";
+            String query = "DELETE FROM vara WHERE idLoteVara = ?";
             PreparedStatement pstm;
 
             try {
@@ -698,5 +698,71 @@ public class ProdutoDAO {
         }
     }
     
-    
+    public static void carregaTabPrincipal(DefaultTableModel modelo) {
+        ResultSet rs = null;       
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM anzol");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "ANZOL",
+                    rs.getString("modeloAnzol"),
+                    rs.getInt("idLoteAnzol"),
+                    rs.getInt("uniLoteAnzol"), 
+                    rs.getString("precoAnzol")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        rs = null;   
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "CARRETILHA",
+                    rs.getString("modeloCar"),
+                    rs.getInt("idLoteCar"),
+                    rs.getInt("uniLoteCar"), 
+                    rs.getString("precoCar")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        rs = null;  
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM linha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "LINHA",
+                    rs.getString("modeloLinha"),
+                    rs.getInt("idLoteLinha"),
+                    rs.getInt("uniLoteLinha"), 
+                    rs.getString("precoLinha")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        rs = null;  
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM vara");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "VARA",
+                    rs.getString("modeloVara"),
+                    rs.getInt("idLoteVara"),
+                    rs.getInt("uniLoteVara"), 
+                    rs.getString("precoVara")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        
+    }
 }

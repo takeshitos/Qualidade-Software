@@ -15,4 +15,8 @@ public class ControllerProduto {
      public static void carregaTabela(DefaultTableModel modelo) {
         ProdutoDAO.carregaTabAltDel(modelo);
     }
+     
+    public static void carregaTabPrincipal(DefaultTableModel modelo){
+        ProdutoDAO.carregaTabPrincipal(modelo);
+    }
 }

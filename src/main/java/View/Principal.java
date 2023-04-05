@@ -2,6 +2,7 @@ package View;
 
 
 
+import Controller.ControllerProduto;
 import Model.Carretilha;
 import Model.Linha;
 import Model.Vara;
@@ -196,30 +197,9 @@ public class Principal extends javax.swing.JFrame {
    public void listaTab(){
         DefaultTableModel modelo = (DefaultTableModel) tabProd.getModel();
         
-        int posLin = 0;
-        modelo.setRowCount(posLin);
+        modelo.setNumRows(0);
         
-        for(Anzol a : bda.getBdAnzol()){
-            modelo.insertRow(posLin, new Object[]{a.mostraClasse(), a.getModelo(), a.getCodigoLote(), a.getUnidadesLote(), a.getPreco()});
-            posLin++;
-        }
-        
-        posLin = 0;
-        
-        for(Carretilha c : bdc.getBdCarretilha()){
-            modelo.insertRow(posLin, new Object[]{c.mostraClasse(), c.getModelo(), c.getCodigoLote(), c.getUnidadesLote(), c.getPreco()});
-            posLin++;
-        }
-        posLin = 0;
-        for(Linha l : bdl.getBdLinha()){
-            modelo.insertRow(posLin, new Object[]{l.mostraClasse(), l.getModelo(), l.getCodigoLote(), l.getUnidadesLote(), l.getPreco()});
-            posLin++;
-        }
-        posLin = 0;
-        for(Vara v : bdv.getBdVara()){
-            modelo.insertRow(posLin, new Object[]{v.mostraClasse(), v.getModelo(), v.getCodigoLote(), v.getUnidadesLote(), v.getPreco()});
-            posLin++;
-        }
+        ControllerProduto.carregaTabPrincipal(modelo);
     }
     public void selectTab(){
         String valLinTab = "";

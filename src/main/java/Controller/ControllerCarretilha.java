@@ -7,6 +7,8 @@ package Controller;
 import Dao.ProdutoDAO;
 import Model.Carretilha;
 import Model.UniLotePeqException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,8 +18,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControllerCarretilha {
     
+    public static Carretilha consulta(Carretilha a){
+        try {
+            return (Carretilha) ProdutoDAO.pesquisaProdID(a);
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(ControllerCarretilha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
     public static boolean verifica(Carretilha a){
-        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "carretilha");
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "carretilha", "idLoteCar");
     }
     
     public static Carretilha atualizaCarretilha(Carretilha c) throws UniLotePeqException{

@@ -3,6 +3,8 @@ package Controller;
 import Dao.ProdutoDAO;
 import Model.Anzol;
 import Model.UniLotePeqException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,10 +69,19 @@ public class ControllerAnzol {
     } 
     
     public static boolean verifica(Anzol a){
-        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "anzol");
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "anzol", "idLoteAnzol");
     }
     
     public static boolean excluir(Anzol a){
         return ProdutoDAO.drop(a);
+    }
+    
+    public static Anzol consulta(Anzol a){
+        try {
+            return (Anzol) ProdutoDAO.pesquisaProdID(a);
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(ControllerAnzol.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

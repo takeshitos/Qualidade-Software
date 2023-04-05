@@ -7,6 +7,8 @@ package Controller;
 import Dao.ProdutoDAO;
 import Model.Linha;
 import Model.UniLotePeqException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,8 +18,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControllerLinha {
     
+    public static Linha consulta(Linha a){
+        try {
+            return (Linha) ProdutoDAO.pesquisaProdID(a);
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(ControllerLinha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public static boolean verifica(Linha a){
-        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "linha");
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "linha", "idLoteLinha");
     }
     
     public static Linha atualizaLinha(Linha l) throws UniLotePeqException{

@@ -351,7 +351,7 @@ public class CadAnzol extends javax.swing.JFrame {
         }
         a1.setMarca(jtMarca.getText());
         a1.setModelo(jtModelo.getText());
-        a1.setPreco(Float.valueOf(jtPreco.getText()));
+        a1.setPreco(Double.valueOf(jtPreco.getText()));
         a1.setTamanho(Integer.parseInt(jtTamanho.getText()));
         a1.setUnidadesPacote(Integer.parseInt(jtUnidadesPacote.getText()));
         a1.setFabri(jtDia.getText()+"/"+jtMes.getText()+"/"+jtAno.getText());

@@ -365,7 +365,7 @@ public class CadCarretilha extends javax.swing.JFrame {
         c.setPerfil(jtPerfil.getText());
         c.setMarca(jtMarca.getText());
         c.setModelo(jtModelo.getText());
-        c.setPreco(Float.valueOf(jtPreco.getText()));
+        c.setPreco(Double.valueOf(jtPreco.getText()));
         c.setFabri(jtDia.getText()+"/"+jtMes.getText()+"/"+jtAno.getText());
         
         boolean feed = ControllerCarretilha.cadastrarCar(c);

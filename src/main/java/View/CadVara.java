@@ -351,7 +351,7 @@ public class CadVara extends javax.swing.JFrame {
         }
         v.setMarca(jtMarca.getText());
         v.setModelo(jtModelo.getText());
-        v.setPreco(Float.valueOf(jtPreco.getText()));
+        v.setPreco(Double.valueOf(jtPreco.getText()));
         v.setTamanho(jtTamanho.getText());  
         v.setAcao(jtAcao.getText());
         v.setResistencia(jtResistencia.getText());

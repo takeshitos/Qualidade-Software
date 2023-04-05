@@ -2,16 +2,14 @@ package Model;
 
 
 abstract public class Produto{
-        private String tipo;
 	private String marca;
 	private String modelo;
-	private float preco;
+	private double preco;
 	private int codigoLote;
 	private int unidadesLote;
 	private String fabri;
 
 	public Produto(){
-                tipo = "";
 		marca = "";
 		modelo = "";
 		preco = 0;
@@ -19,13 +17,6 @@ abstract public class Produto{
 		unidadesLote = 0;
 		fabri = "";
 	}
-        public String getTipo(){
-            return tipo;
-        }
-        
-        public void setTipo(String tipo){
-            this.tipo = tipo;
-        }
 
 	public String getMarca(){
 		return marca;
@@ -39,10 +30,10 @@ abstract public class Produto{
 	public void setModelo(String modelo){
 		this.modelo = modelo;	
 	}
-	public float getPreco(){
+	public double getPreco(){
 		return preco;
 	}
-	public void setPreco(float preco){
+	public void setPreco(double preco){
 		this.preco = preco;
 	}
 	public int getCodigoLote(){

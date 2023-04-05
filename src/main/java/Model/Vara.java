@@ -1,20 +1,20 @@
 package Model;
 
 
-final public class Vara extends Produto implements Calc{
-	private float tamanho;
+final public class Vara extends Produto{
+	private String tamanho;
 	private String acao;
-	private int resistencia;
+	private String resistencia;
 	
 	public Vara(){
-		tamanho = 0;
+		tamanho = "";
 		acao = "";
-		resistencia = 0;
+		resistencia = "";
 	}
-	public float getTamanho(){
+	public String getTamanho(){
 		return tamanho;
 	}
-	public void setTamanho(float tamanho){
+	public void setTamanho(String tamanho){
 		this.tamanho = tamanho;
 	}
 	public String getAcao(){
@@ -23,19 +23,17 @@ final public class Vara extends Produto implements Calc{
 	public void setAcao(String acao){
 		this.acao = acao;
 	}
-	public int getResistencia(){
+	public String getResistencia(){
 		return resistencia;
 	} 	
-	public void setResistencia(int resistencia){
+	public void setResistencia(String resistencia){
 		this.resistencia = resistencia;
 	}
 	//Polimorfismo por sobrescrita
 	public String mostraClasse(){
 		return "VARA";
 	}
-	public float converte(){
-		return ((float)(this.resistencia)/x);
-	}
+	
 	public float desconto(){
 		return super.precoDesconto();
 	}

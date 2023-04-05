@@ -5,19 +5,19 @@ import Model.Produto;
 
 
 final public class Carretilha extends Produto{
-	private int capLinha;
+	private String capLinha;
 	private int qtdRolamento;
 	private String perfil;
 	
 	public Carretilha(){
-		capLinha = 0;
+		capLinha = "0";
 		qtdRolamento = 0;
 		perfil = "";
 	}
-	public int getCapLinha(){
+	public String getCapLinha(){
 		return capLinha;
 	}
-	public void setCapLinha(int capLinha){
+	public void setCapLinha(String capLinha){
 		this.capLinha = capLinha;
 	}
 	public int getQtdRolamento(){

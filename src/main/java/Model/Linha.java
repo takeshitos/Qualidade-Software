@@ -4,35 +4,35 @@ package Model;
 import Model.Produto;
 
 
-final public class Linha extends Produto implements Calc{
-	private int comprimento;
-	private float espessura;
-	private int resistencia;
+final public class Linha extends Produto{
+	private String comprimento;
+	private String espessura;
+	private String resistencia;
 	private String cor;
 	
 	public Linha(){
-		comprimento = 0;
-		espessura = 0;
-		resistencia = 0;
+		comprimento = "";
+		espessura = "";
+		resistencia = "";
 		cor = "";
 	}
 	
-	public int getComprimento(){
+	public String getComprimento(){
 		return comprimento;
 	}
-	public void setComprimento(int comprimento){
+	public void setComprimento(String comprimento){
 		this.comprimento = comprimento;
 	}
-	public float getEspessura(){
+	public String getEspessura(){
 		return espessura;
 	}
-	public void setEspessura(float espessura){
+	public void setEspessura(String espessura){
 		this.espessura = espessura;
 	}
-	public int getResistencia(){
+	public String getResistencia(){
 		return resistencia;
 	}
-	public void setResistencia(int resistencia){
+	public void setResistencia(String resistencia){
 		this.resistencia = resistencia;
 	}
 	public String getCor(){
@@ -45,9 +45,7 @@ final public class Linha extends Produto implements Calc{
 	public String mostraClasse(){
 		return "LINHA";
 	}
-	public float converte(){
-		return ((float)(this.resistencia)/x);
-	}
+        
 	public float desconto(){
 		return super.precoDesconto();
 	}

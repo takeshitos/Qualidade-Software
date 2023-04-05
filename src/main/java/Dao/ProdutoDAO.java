@@ -256,7 +256,7 @@ public class ProdutoDAO {
         ResultSet pesquisaVara = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE med_id = '" + Id + "'");
         
         try{
-            if (pesquisaAnzol.isBeforeFirst() || pesquisaLinha.isBeforeFirst() || pesquisaCarretilha.isBeforeFirst() || pesquisaVara.isBeforeFirst() || pesquisaPac.isBeforeFirst()) 
+            if (pesquisaAnzol.isBeforeFirst() || pesquisaLinha.isBeforeFirst() || pesquisaCarretilha.isBeforeFirst() || pesquisaVara.isBeforeFirst()) 
                 return false; //Tem id
 
             else

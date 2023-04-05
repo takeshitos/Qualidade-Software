@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Dao.ConexaoBD;
 import Dao.ProdutoDAO;
 
 /**
@@ -12,6 +13,7 @@ import Dao.ProdutoDAO;
  */
 public class teste {
     public static void main(String []args) throws UniLotePeqException{
+        ConexaoBD.conectaBD();
         Anzol a = new Anzol();
         a.setCodigoLote(1);
         a.setUnidadesLote(12);

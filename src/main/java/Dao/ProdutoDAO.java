@@ -250,11 +250,11 @@ public class ProdutoDAO {
     }
       
     public static boolean pesquisarProdutoId(String Id, String tipo, String coluna) {
-        
-        ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE "+coluna+" = '" + Id+ "'");            
-        
+        ResultSet pesquisa = null;
+        pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE "+coluna+" = '" + Id+ "'");                 
         try{
-            if (pesquisa.isAfterLast()){
+            if (pesquisa.isBeforeFirst()){
+                System.out.println("TEM IDDD");
                 return false; //Tem id
 
             }else

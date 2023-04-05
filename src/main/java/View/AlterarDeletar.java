@@ -494,7 +494,7 @@ public class AlterarDeletar extends javax.swing.JFrame {
       
       boolean feed = ControllerAnzol.verifica(a);
        
-      if(feed){
+      if(!feed){
             if(ControllerAnzol.excluir(a)){
                 JOptionPane.showMessageDialog(
                     null,
@@ -531,7 +531,7 @@ public class AlterarDeletar extends javax.swing.JFrame {
       
       boolean feed = ControllerCarretilha.verifica(c);
        
-      if(feed){
+      if(!feed){
             if(ControllerCarretilha.excluir(c)){
                 JOptionPane.showMessageDialog(
                     null,
@@ -567,7 +567,7 @@ public class AlterarDeletar extends javax.swing.JFrame {
       
       boolean feed = ControllerLinha.excluir(l);
        
-      if(feed){
+      if(!feed){
             if(ControllerLinha.excluir(l)){
                 JOptionPane.showMessageDialog(
                     null,
@@ -603,7 +603,7 @@ public class AlterarDeletar extends javax.swing.JFrame {
       
       boolean feed = ControllerVara.excluir(v);
        
-      if(feed){
+      if(!feed){
             if(ControllerVara.excluir(v)){
                 JOptionPane.showMessageDialog(
                     null,

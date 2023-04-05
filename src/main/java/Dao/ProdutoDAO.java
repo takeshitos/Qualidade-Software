@@ -266,9 +266,9 @@ public class ProdutoDAO {
         }
     }
     
-    public static Produto pesquisaProdID(String ID, String tipo) throws UniLotePeqException {
-        if(tipo.contains("ANZOL")){
-            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM anzol WHERE idLoteAnzol = '" + ID + "'");
+    public static Produto pesquisaProdID(Produto p) throws UniLotePeqException {
+        if(p.getClass().getSimpleName().equalsIgnoreCase("ANZOL")){
+            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM anzol WHERE idLoteAnzol = '" + Integer.toString(p.getCodigoLote()) + "'");
             Anzol a = null;
             try {
                 if (pesquisa.isBeforeFirst()) {
@@ -291,8 +291,8 @@ public class ProdutoDAO {
                 System.out.println("ERRO NA FORMATAÇÃO => " + e);
             }
             return a;
-        }else if(tipo.contains("CARRETILHA")){
-            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha WHERE idLoteCar = '" + ID + "'");
+        }else if(p.getClass().getSimpleName().equalsIgnoreCase("CARRETILHA")){
+            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha WHERE idLoteCar = '" + Integer.toString(p.getCodigoLote()) + "'");
             Carretilha c = null;
             try {
                 if (pesquisa.isBeforeFirst()) {
@@ -316,8 +316,8 @@ public class ProdutoDAO {
                 System.out.println("ERRO NA FORMATAÇÃO => " + e);
             }
             return c;
-        }else if(tipo.contains("VARA")){
-            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM vara WHERE idLoteVara = '" + ID + "'");
+        }else if(p.getClass().getSimpleName().equalsIgnoreCase("VARA")){
+            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM vara WHERE idLoteVara = '" + Integer.toString(p.getCodigoLote()) + "'");
             Vara v = null;
             try {
                 if (pesquisa.isBeforeFirst()) {
@@ -341,8 +341,8 @@ public class ProdutoDAO {
                 System.out.println("ERRO NA FORMATAÇÃO => " + e);
             }
             return v;
-        }else if(tipo.contains("LINHA")){
-            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM linha WHERE idLoteLinha = '" + ID + "'");
+        }else if(p.getClass().getSimpleName().equalsIgnoreCase("LINHA")){
+            ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM linha WHERE idLoteLinha = '" + Integer.toString(p.getCodigoLote()) + "'");
             Linha l = null;
             try {
                 if (pesquisa.isBeforeFirst()) {
@@ -372,15 +372,15 @@ public class ProdutoDAO {
         }
      }   
     
-    public static boolean drop(String ID, String tipo) {
+    public static boolean drop(Produto p) {
         Connection conn = ConexaoBD.getConnection();
-            if(tipo.contains("ANZOL")){
+            if(p.getClass().getSimpleName().equalsIgnoreCase("ANZOL")){
             String query = "DELETE FROM anzol WHERE idLoteAnzol = ?";
             PreparedStatement pstm;
 
             try {
                 pstm = conn.prepareStatement(query);
-                pstm.setString(1, ID);
+                pstm.setString(1, Integer.toString(p.getCodigoLote()));
 
                 pstm.execute();
                 pstm.close();
@@ -392,13 +392,13 @@ public class ProdutoDAO {
             }
 
             return false;
-        }else if(tipo.contains("CARRETILHA")){
+        }else if(p.getClass().getSimpleName().equalsIgnoreCase("CARRETILHA")){
             String query = "DELETE FROM carretilha WHERE idLoteAnzol = ?";
             PreparedStatement pstm;
 
             try {
                 pstm = conn.prepareStatement(query);
-                pstm.setString(1, ID);
+                pstm.setString(1, Integer.toString(p.getCodigoLote()));
 
                 pstm.execute();
                 pstm.close();
@@ -410,13 +410,13 @@ public class ProdutoDAO {
             }
 
             return false;
-        }else if(tipo.contains("LINHA")){
+        }else if(p.getClass().getSimpleName().equalsIgnoreCase("LINHA")){
             String query = "DELETE FROM linha WHERE idLoteAnzol = ?";
             PreparedStatement pstm;
 
             try {
                 pstm = conn.prepareStatement(query);
-                pstm.setString(1, ID);
+                pstm.setString(1, Integer.toString(p.getCodigoLote()));
 
                 pstm.execute();
                 pstm.close();
@@ -428,13 +428,13 @@ public class ProdutoDAO {
             }
 
             return false;
-        }else if(tipo.contains("VARA")){
+        }else if(p.getClass().getSimpleName().equalsIgnoreCase("VARA")){
             String query = "DELETE FROM vara WHERE idLoteAnzol = ?";
             PreparedStatement pstm;
 
             try {
                 pstm = conn.prepareStatement(query);
-                pstm.setString(1, ID);
+                pstm.setString(1, Integer.toString(p.getCodigoLote()));
 
                 pstm.execute();
                 pstm.close();

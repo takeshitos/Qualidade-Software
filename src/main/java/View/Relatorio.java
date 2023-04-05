@@ -1,12 +1,12 @@
 package View;
 
 
+import Controller.ControllerAnzol;
+import Controller.ControllerCarretilha;
+import Controller.ControllerLinha;
+import Controller.ControllerVara;
 import Model.Carretilha;
 import Model.Linha;
-import Model.BdVara;
-import Model.BdLinha;
-import Model.BdAnzol;
-import Model.BdCarretilha;
 import Model.Vara;
 import Model.Anzol;
 import javax.swing.JOptionPane;
@@ -20,10 +20,6 @@ public class Relatorio extends javax.swing.JFrame {
     private Carretilha c = new Carretilha();
     private Linha l = new Linha();
     private Vara v = new Vara();
-    private static BdAnzol bda = new BdAnzol();
-    private static BdCarretilha bdc = new BdCarretilha();
-    private static BdLinha bdl = new BdLinha();
-    private static BdVara bdv = new BdVara();
 
     public static Relatorio getRelatorio(){
 
@@ -119,6 +115,7 @@ public class Relatorio extends javax.swing.JFrame {
             tbAnzol.getColumnModel().getColumn(4).setMaxWidth(70);
             tbAnzol.getColumnModel().getColumn(5).setMinWidth(160);
             tbAnzol.getColumnModel().getColumn(5).setMaxWidth(160);
+            tbAnzol.getColumnModel().getColumn(5).setHeaderValue("PREÇO DESCONTO 10%");
             tbAnzol.getColumnModel().getColumn(6).setMinWidth(80);
             tbAnzol.getColumnModel().getColumn(6).setMaxWidth(80);
             tbAnzol.getColumnModel().getColumn(7).setMinWidth(140);
@@ -172,13 +169,13 @@ public class Relatorio extends javax.swing.JFrame {
 
         tbLinha.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "CÓDIGO LOTE", "UNIDADES LOTE", "MARCA", "MODELO", "PREÇO", "PREÇO DESCONTO 10%", "COMPRIMENTO(Metros)", "ESPESSURA(mm)", "RESISTÊNCIA(Libras)", "RESISTÊNCIA Kg", "COR", "FABRICAÇÃO"
+                "CÓDIGO LOTE", "UNIDADES LOTE", "MARCA", "MODELO", "PREÇO", "PREÇO DESCONTO 10%", "COMPRIMENTO(Metros)", "ESPESSURA(mm)", "RESISTÊNCIA(Libras)", "COR", "FABRICAÇÃO"
             }
         ));
         tbLinha.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,12 +203,10 @@ public class Relatorio extends javax.swing.JFrame {
             tbLinha.getColumnModel().getColumn(7).setMaxWidth(120);
             tbLinha.getColumnModel().getColumn(8).setMinWidth(130);
             tbLinha.getColumnModel().getColumn(8).setMaxWidth(130);
-            tbLinha.getColumnModel().getColumn(9).setMinWidth(130);
-            tbLinha.getColumnModel().getColumn(9).setMaxWidth(130);
-            tbLinha.getColumnModel().getColumn(10).setMinWidth(60);
-            tbLinha.getColumnModel().getColumn(10).setMaxWidth(60);
-            tbLinha.getColumnModel().getColumn(11).setMinWidth(85);
-            tbLinha.getColumnModel().getColumn(11).setMaxWidth(85);
+            tbLinha.getColumnModel().getColumn(9).setMinWidth(60);
+            tbLinha.getColumnModel().getColumn(9).setMaxWidth(60);
+            tbLinha.getColumnModel().getColumn(10).setMinWidth(85);
+            tbLinha.getColumnModel().getColumn(10).setMaxWidth(85);
         }
 
         LINHA.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -222,13 +217,13 @@ public class Relatorio extends javax.swing.JFrame {
 
         tbVara.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "CÓDIGO LOTE", "UNIDADES LOTE", "MARCA", "MODELO", "PREÇO", "PREÇO DESCONTO 10%", "TAMANHO(Metros)", "AÇÃO", "RESISTÊNCIA(Libras)", "RESISTÊNCIA Kg", "FABRICAÇÃO"
+                "CÓDIGO LOTE", "UNIDADES LOTE", "MARCA", "MODELO", "PREÇO", "PREÇO DESCONTO 10%", "TAMANHO(Metros)", "AÇÃO", "RESISTÊNCIA(Libras)", "FABRICAÇÃO"
             }
         ));
         tbVara.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -256,10 +251,8 @@ public class Relatorio extends javax.swing.JFrame {
             tbVara.getColumnModel().getColumn(7).setMaxWidth(60);
             tbVara.getColumnModel().getColumn(8).setMinWidth(140);
             tbVara.getColumnModel().getColumn(8).setMaxWidth(140);
-            tbVara.getColumnModel().getColumn(9).setMinWidth(130);
-            tbVara.getColumnModel().getColumn(9).setMaxWidth(130);
-            tbVara.getColumnModel().getColumn(10).setMinWidth(85);
-            tbVara.getColumnModel().getColumn(10).setMaxWidth(85);
+            tbVara.getColumnModel().getColumn(9).setMinWidth(85);
+            tbVara.getColumnModel().getColumn(9).setMaxWidth(85);
         }
 
         consultar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -339,10 +332,8 @@ public class Relatorio extends javax.swing.JFrame {
                     .addComponent(LINHA)
                     .addComponent(CARRETILHA)
                     .addComponent(VARA)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1288, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(consultar)
@@ -389,8 +380,10 @@ public class Relatorio extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btSair)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btLimpar)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btLimpar))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 125, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,8 +422,8 @@ public class Relatorio extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlMostraMarca)
                             .addComponent(jtMostraMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(consultar)
                             .addComponent(jlInfo))
@@ -444,7 +437,7 @@ public class Relatorio extends javax.swing.JFrame {
                             .addComponent(btCarretilha)
                             .addComponent(btLinha)
                             .addComponent(btVara))))
-                .addGap(18, 18, 18)
+                .addGap(346, 346, 346)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSair)
                     .addComponent(btLimpar))
@@ -453,28 +446,14 @@ public class Relatorio extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(jPanel1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
-        );
+        getContentPane().add(jScrollPane4, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        listaAnzol();
-        listaCarretilha();
-        listaLinha();
-        listaVara();
+        listaTABS();
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void btAnzolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnzolActionPerformed
@@ -588,62 +567,25 @@ public class Relatorio extends javax.swing.JFrame {
         }
     }
     
-    public void listaAnzol(){
+    public void listaTABS(){
         DefaultTableModel modelo = (DefaultTableModel) tbAnzol.getModel();
         
-        int posLin = 0;
-        modelo.setRowCount(posLin);
+        modelo.setNumRows(0);
         
-        for(Anzol a : bda.getBdAnzol()){
-            String data;
-            data = a.getFabri().getDia()+"/"+a.getFabri().getMes()+"/"+a.getFabri().getAno();
-            modelo.insertRow(posLin, new Object[]{a.getCodigoLote(), a.getUnidadesLote(),a.getMarca(),a.getModelo(), a.getPreco(), a.desconto(), a.getTamanho(), a.getUnidadesPacote(), data});
-            posLin++;
-        }
+        ControllerAnzol.carregaTabelaFull(modelo);
         
-    }
-    
-    public void listaCarretilha(){
-        DefaultTableModel modelo = (DefaultTableModel) tbCarretilha.getModel();
-        
-        int posLin = 0;
-        modelo.setRowCount(posLin);
-        
-        for(Carretilha c : bdc.getBdCarretilha()){
-            String data;
-            data = c.getFabri().getDia()+"/"+c.getFabri().getMes()+"/"+c.getFabri().getAno();
-            modelo.insertRow(posLin, new Object[]{c.getCodigoLote(), c.getUnidadesLote(),c.getMarca(),c.getModelo(), c.getPreco(), c.desconto(), c.getCapLinha(), c.getQtdRolamento(), c.getPerfil(), data});
-            posLin++;
-        }
-    }
-    
-    public void listaLinha(){
-        DefaultTableModel modelo = (DefaultTableModel) tbLinha.getModel();
-        
-        int posLin = 0;
-        modelo.setRowCount(posLin);
-       
-        for(Linha l : bdl.getBdLinha()){
-            String data;
-            data = l.getFabri().getDia()+"/"+l.getFabri().getMes()+"/"+l.getFabri().getAno();
-            modelo.insertRow(posLin, new Object[]{l.getCodigoLote(), l.getUnidadesLote(),l.getMarca(),l.getModelo(),l.getPreco(), l.desconto(), l.getComprimento(), l.getEspessura(), l.getResistencia(),l.converte(), l.getCor(), data});
-            posLin++;
-        }
-    }
-    
-    public void listaVara(){
-        DefaultTableModel modelo = (DefaultTableModel) tbVara.getModel();
-        
-        int posLin = 0;
-        modelo.setRowCount(posLin);
+        DefaultTableModel modelo2 = (DefaultTableModel) tbCarretilha.getModel();
+        modelo2.setNumRows(0);
+        ControllerCarretilha.carregaTabelaFull(modelo);
+        DefaultTableModel modelo3 = (DefaultTableModel) tbLinha.getModel();
+        modelo3.setNumRows(0);
+        ControllerLinha.carregaTabelaFull(modelo);
+        DefaultTableModel modelo4 = (DefaultTableModel) tbVara.getModel();
+        modelo4.setNumRows(0);
+        ControllerVara.carregaTabelaFull(modelo);
+    }   
 
-        for(Vara v : bdv.getBdVara()){
-            String data;
-            data = v.getFabri().getDia()+"/"+v.getFabri().getMes()+"/"+v.getFabri().getAno();
-            modelo.insertRow(posLin, new Object[]{v.getCodigoLote(), v.getUnidadesLote(),v.getMarca(),v.getModelo(), v.getPreco(), v.desconto(), v.getTamanho(),v.getAcao(),v.getResistencia(),v.converte(), data});
-            posLin++;
-        }
-    }
+ 
     
     public void consulAnzol(){
         a = new Anzol();

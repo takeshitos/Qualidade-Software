@@ -22,25 +22,17 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,112,0,0,5,39"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane4" min="-2" pref="665" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane4" alignment="0" pref="423" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-  </Layout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -56,10 +48,8 @@
                           <Component id="LINHA" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="CARRETILHA" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="VARA" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" alignment="0" min="-2" pref="1147" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" alignment="0" min="-2" pref="1128" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="918" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="1288" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="consultar" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -123,8 +113,10 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jScrollPane5" alignment="0" min="-2" pref="1022" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" min="-2" pref="1164" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="125" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -148,7 +140,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="127" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbCodigoMostra" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -169,8 +161,8 @@
                                   <Component id="jtMostraMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="consultar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jlInfo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -189,7 +181,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -258,7 +250,7 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="160" minWidth="160" prefWidth="-1" resizable="true">
-                          <Title/>
+                          <Title value="PRE&#xc7;O DESCONTO 10%"/>
                           <Editor/>
                           <Renderer/>
                         </Column>
@@ -394,7 +386,7 @@
                 <Component class="javax.swing.JTable" name="tbLinha">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="12" rowCount="4">
+                      <Table columnCount="11" rowCount="4">
                         <Column editable="true" title="C&#xd3;DIGO LOTE" type="java.lang.Object"/>
                         <Column editable="true" title="UNIDADES LOTE" type="java.lang.Object"/>
                         <Column editable="true" title="MARCA" type="java.lang.Object"/>
@@ -404,7 +396,6 @@
                         <Column editable="true" title="COMPRIMENTO(Metros)" type="java.lang.Object"/>
                         <Column editable="true" title="ESPESSURA(mm)" type="java.lang.Object"/>
                         <Column editable="true" title="RESIST&#xca;NCIA(Libras)" type="java.lang.Object"/>
-                        <Column editable="true" title="RESIST&#xca;NCIA Kg" type="java.lang.Object"/>
                         <Column editable="true" title="COR" type="java.lang.Object"/>
                         <Column editable="true" title="FABRICA&#xc7;&#xc3;O" type="java.lang.Object"/>
                       </Table>
@@ -447,11 +438,6 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="130" minWidth="130" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -509,7 +495,7 @@
                 <Component class="javax.swing.JTable" name="tbVara">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="11" rowCount="4">
+                      <Table columnCount="10" rowCount="4">
                         <Column editable="true" title="C&#xd3;DIGO LOTE" type="java.lang.Object"/>
                         <Column editable="true" title="UNIDADES LOTE" type="java.lang.Object"/>
                         <Column editable="true" title="MARCA" type="java.lang.Object"/>
@@ -519,7 +505,6 @@
                         <Column editable="true" title="TAMANHO(Metros)" type="java.lang.Object"/>
                         <Column editable="true" title="A&#xc7;&#xc3;O" type="java.lang.Object"/>
                         <Column editable="true" title="RESIST&#xca;NCIA(Libras)" type="java.lang.Object"/>
-                        <Column editable="true" title="RESIST&#xca;NCIA Kg" type="java.lang.Object"/>
                         <Column editable="true" title="FABRICA&#xc7;&#xc3;O" type="java.lang.Object"/>
                       </Table>
                     </Property>
@@ -566,11 +551,6 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="140" minWidth="140" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="130" minWidth="130" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>

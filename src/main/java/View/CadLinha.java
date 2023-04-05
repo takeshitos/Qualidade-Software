@@ -1,10 +1,8 @@
 package View;
 
 
-import Controller.ControllerCarretilha;
 import Controller.ControllerLinha;
 import Model.Linha;
-import Model.BdLinha;
 import Model.UniLotePeqException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,10 +20,9 @@ public class CadLinha extends javax.swing.JFrame {
 
     private static CadLinha unicoCadLinha;   
     private Linha l = new Linha();
-    private static BdLinha gp = new BdLinha();
+ 
 
-    public static CadLinha getCadLinha(BdLinha gp1){
-        gp = gp1;
+    public static CadLinha getCadLinha(){
         if(unicoCadLinha == null){
             unicoCadLinha = new CadLinha();
         }

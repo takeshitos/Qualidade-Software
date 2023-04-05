@@ -251,13 +251,10 @@ public class ProdutoDAO {
       
     public static boolean pesquisarProdutoId(String Id, String tipo) {
         
-        ResultSet pesquisaAnzol = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE idLoteAnzol = '" + Id+ "'");            
-        ResultSet pesquisaLinha = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE ate_id = '" + Id + "'");
-        ResultSet pesquisaCarretilha = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE enf_id = '" + Id + "'");
-        ResultSet pesquisaVara = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE med_id = '" + Id + "'");
+        ResultSet pesquisa = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM "+tipo+" WHERE idLoteAnzol = '" + Id+ "'");            
         
         try{
-            if (pesquisaAnzol.isBeforeFirst() || pesquisaLinha.isBeforeFirst() || pesquisaCarretilha.isBeforeFirst() || pesquisaVara.isBeforeFirst()) 
+            if (pesquisa.isBeforeFirst()) 
                 return false; //Tem id
 
             else
@@ -603,5 +600,103 @@ public class ProdutoDAO {
         }
         
     }
+    
+    public static void carregaRelaAnzol(DefaultTableModel modelo) {
+        ResultSet rs = null;       
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM anzol");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteAnzol"),
+                    rs.getInt("uniLoteAnzol"), 
+                    rs.getString("marcaAnzol"),
+                    rs.getString("modeloAnzol"),
+                    rs.getString("precoAnzol"),
+                    0.9*(rs.getDouble("precoAnzol")),
+                    rs.getInt("tamanhoAnzol"),
+                    rs.getInt("uniPacAnzol"),
+                    rs.getString("fabriAnzol")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+    }
+    
+    public static void carregaRelaCar(DefaultTableModel modelo) {
+        ResultSet rs = null;       
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteCar"),
+                    rs.getInt("uniLoteCar"), 
+                    rs.getString("marcaCar"),
+                    rs.getString("modeloCar"),
+                    rs.getString("precoCar"),
+                    0.9*(rs.getDouble("precoCar")),
+                    rs.getString("capLinhaCar"),
+                    rs.getInt("qtdRolCar"),
+                    rs.getString("perfilCar"),
+                    rs.getString("fabriCar")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+    }
+    
+    public static void carregaRelaLinha(DefaultTableModel modelo) {
+        ResultSet rs = null;       
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM linha");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteLinha"),
+                    rs.getInt("uniLoteLinha"), 
+                    rs.getString("marcaLinha"),
+                    rs.getString("modeloLinha"),
+                    rs.getString("precoLinha"),
+                    0.9*(rs.getDouble("precoLinha")),
+                    rs.getString("compriLinha"),
+                    rs.getString("espLinha"),
+                    rs.getString("resistLinha"),
+                    rs.getString("corLinha"),
+                    rs.getString("fabriLinha")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+    }
+    
+    public static void carregaRelaVara(DefaultTableModel modelo) {
+        ResultSet rs = null;       
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM vara");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteVara"),
+                    rs.getInt("uniLoteVara"), 
+                    rs.getString("marcaVara"),
+                    rs.getString("modeloVara"),
+                    rs.getString("precoVara"),
+                    0.9*(rs.getDouble("precoVara")),
+                    rs.getString("tamVara"),
+                    rs.getString("acaoVara"),
+                    rs.getString("resisVara"),
+                    rs.getString("fabriVara")
+                    
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+    }
+    
     
 }

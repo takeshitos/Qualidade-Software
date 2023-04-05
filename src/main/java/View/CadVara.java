@@ -1,9 +1,7 @@
 package View;
 
 
-import Controller.ControllerCarretilha;
 import Controller.ControllerVara;
-import Model.BdVara;
 import Model.UniLotePeqException;
 import Model.Vara;
 import javax.swing.JOptionPane;
@@ -15,10 +13,9 @@ public class CadVara extends javax.swing.JFrame {
 
     private static CadVara unicoCadVara;   
     private Vara v = new Vara();
-    private static BdVara gp = new BdVara();
+  
 
-    public static CadVara getCadVara(BdVara gp1){
-        gp = gp1;
+    public static CadVara getCadVara(){
         if(unicoCadVara == null){
             unicoCadVara = new CadVara();
         }

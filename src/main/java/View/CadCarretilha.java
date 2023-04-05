@@ -3,7 +3,6 @@ package View;
 
 import Controller.ControllerAnzol;
 import Controller.ControllerCarretilha;
-import Model.BdCarretilha;
 import Model.Carretilha;
 import Model.UniLotePeqException;
 import javax.swing.JOptionPane;
@@ -13,10 +12,8 @@ public class CadCarretilha extends javax.swing.JFrame {
     
     private static CadCarretilha unicoCadCarretilha;   
     private Carretilha c = new Carretilha();
-    private static BdCarretilha gp = new BdCarretilha();
 
-    public static CadCarretilha getCadCarretilha(BdCarretilha gp1){
-        gp = gp1;
+    public static CadCarretilha getCadCarretilha(){
         if(unicoCadCarretilha == null){
             unicoCadCarretilha = new CadCarretilha();
         }

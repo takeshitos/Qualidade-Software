@@ -6,12 +6,8 @@ import Controller.ControllerCarretilha;
 import Controller.ControllerLinha;
 import Controller.ControllerProduto;
 import Controller.ControllerVara;
-import Model.BdCarretilha;
 import Model.Carretilha;
-import Model.BdVara;
-import Model.BdAnzol;
 import Model.Linha;
-import Model.BdLinha;
 import Model.Vara;
 import Model.Anzol;
 import Model.UniLotePeqException;
@@ -29,16 +25,8 @@ public class AlterarDeletar extends javax.swing.JFrame {
     private Carretilha c = new Carretilha();
     private Linha l = new Linha();
     private Vara v = new Vara();
-    private static BdAnzol bda = new BdAnzol();
-    private static BdCarretilha bdc = new BdCarretilha();
-    private static BdLinha bdl = new BdLinha();
-    private static BdVara bdv = new BdVara();
 
-    public static AlterarDeletar getAltDel(BdAnzol bda1, BdCarretilha bdc1, BdLinha bdl1, BdVara bdv1){
-        bda = bda1;
-        bdc = bdc1;
-        bdl = bdl1;
-        bdv = bdv1;
+    public static AlterarDeletar getAltDel(){
         if(unicoAltDel== null){
             unicoAltDel = new AlterarDeletar();
         }
@@ -504,10 +492,26 @@ public class AlterarDeletar extends javax.swing.JFrame {
       a = new Anzol();
       a.setCodigoLote(Integer.parseInt(jtCodigoDel.getText()));
       
-      boolean feed = ControllerAnzol.excluir(a);
+      boolean feed = ControllerAnzol.verifica(a);
        
       if(feed){
-            a = bda.removeAnzol(a);
+            if(ControllerAnzol.excluir(a)){
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Exclusão feita!",
+                    "Confirmação de Exclusão",
+                    0
+                );
+               
+            }else{
+                JOptionPane.showMessageDialog(
+                    null,
+                    "ERRO DAO",
+                    "Erro de Exclusão",
+                    0
+                );
+               
+            }
       }
       else{
                   JOptionPane.showMessageDialog(
@@ -525,10 +529,25 @@ public class AlterarDeletar extends javax.swing.JFrame {
       c = new Carretilha();
       c.setCodigoLote(Integer.parseInt(jtCodigoDel.getText()));
       
-      boolean feed = ControllerCarretilha.excluir(c);
+      boolean feed = ControllerCarretilha.verifica(c);
        
       if(feed){
-            c = bdc.removeCarretilha(c);
+            if(ControllerCarretilha.excluir(c)){
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Exclusão feita!",
+                    "Confirmação de Exclusão",
+                    0
+                );
+            }else{
+                JOptionPane.showMessageDialog(
+                    null,
+                    "ERRO DAO",
+                    "Erro de Exclusão",
+                    0
+                );
+               
+            }
       }
       else{
                   JOptionPane.showMessageDialog(
@@ -549,7 +568,22 @@ public class AlterarDeletar extends javax.swing.JFrame {
       boolean feed = ControllerLinha.excluir(l);
        
       if(feed){
-            l = bdl.removeLinha(l);
+            if(ControllerLinha.excluir(l)){
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Exclusão feita!",
+                    "Confirmação de Exclusão",
+                    0
+                );
+            }else{
+                JOptionPane.showMessageDialog(
+                    null,
+                    "ERRO DAO",
+                    "Erro de Exclusão",
+                    0
+                );
+               
+            }
       }
       else{
                   JOptionPane.showMessageDialog(
@@ -570,7 +604,22 @@ public class AlterarDeletar extends javax.swing.JFrame {
       boolean feed = ControllerVara.excluir(v);
        
       if(feed){
-            v = bdv.removeVara(v);
+            if(ControllerVara.excluir(v)){
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Exclusão feita!",
+                    "Confirmação de Exclusão",
+                    0
+                );
+            }else{
+                JOptionPane.showMessageDialog(
+                    null,
+                    "ERRO DAO",
+                    "Erro de Exclusão",
+                    0
+                );
+               
+            }
       }
       else{
                   JOptionPane.showMessageDialog(

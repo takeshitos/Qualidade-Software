@@ -15,6 +15,11 @@ import javax.swing.table.DefaultTableModel;
  * @author ricar
  */
 public class ControllerVara {
+    
+    public static boolean verifica(Vara a){
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "vara");
+    }
+    
     public static Vara atualizaVara(Vara v) throws UniLotePeqException{
         Vara va = null;
         va = (Vara) ProdutoDAO.pesquisaProdID(v);
@@ -60,6 +65,9 @@ public class ControllerVara {
         ProdutoDAO.carregaTabVara(modelo);
     }
     
+    public static void carregaTabelaFull(DefaultTableModel modelo) {
+        ProdutoDAO.carregaRelaVara(modelo);
+    }
      public static boolean excluir(Vara a){
         return ProdutoDAO.drop(a);
     }

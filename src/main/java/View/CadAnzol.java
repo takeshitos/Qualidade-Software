@@ -2,8 +2,6 @@ package View;
 
 
 import Controller.ControllerAnzol;
-import Dao.ProdutoDAO;
-import Model.BdAnzol;
 import Model.UniLotePeqException;
 import Model.Anzol;
 import javax.swing.JOptionPane;
@@ -13,10 +11,8 @@ public class CadAnzol extends javax.swing.JFrame {
 
     private static CadAnzol unicoCadAnzol;   
     private Anzol a1 = new Anzol();
-    private static BdAnzol gp = new BdAnzol();
 
-    public static CadAnzol getCadAnzol(BdAnzol gp1){
-        gp = gp1;
+    public static CadAnzol getCadAnzol(){
         if(unicoCadAnzol == null){
             unicoCadAnzol = new CadAnzol();
         }

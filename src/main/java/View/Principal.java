@@ -1,10 +1,7 @@
 package View;
 
 
-import Model.BdLinha;
-import Model.BdAnzol;
-import Model.BdCarretilha;
-import Model.BdVara;
+
 import Model.Carretilha;
 import Model.Linha;
 import Model.Vara;
@@ -17,11 +14,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
-    
-    public static BdAnzol bda = new BdAnzol();
-    public static BdCarretilha bdc = new BdCarretilha();
-    public static BdLinha bdl = new BdLinha();
-    public static BdVara bdv = new BdVara();
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -165,11 +158,11 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cdAnzolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdAnzolActionPerformed
-        CadAnzol.getCadAnzol(bda).setVisible(true);
+        CadAnzol.getCadAnzol().setVisible(true);
     }//GEN-LAST:event_cdAnzolActionPerformed
 
     private void cdCarretilhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdCarretilhaActionPerformed
-        CadCarretilha.getCadCarretilha(bdc).setVisible(true);
+        CadCarretilha.getCadCarretilha().setVisible(true);
     }//GEN-LAST:event_cdCarretilhaActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -181,19 +174,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void cdLinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdLinhaActionPerformed
-        CadLinha.getCadLinha(bdl).setVisible(true);
+        CadLinha.getCadLinha().setVisible(true);
     }//GEN-LAST:event_cdLinhaActionPerformed
 
     private void cdVaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdVaraActionPerformed
-        CadVara.getCadVara(bdv).setVisible(true);
+        CadVara.getCadVara().setVisible(true);
     }//GEN-LAST:event_cdVaraActionPerformed
 
     private void mnAltDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAltDelActionPerformed
-        AlterarDeletar.getAltDel(bda, bdc, bdl, bdv).setVisible(true);
+        AlterarDeletar.getAltDel().setVisible(true);
     }//GEN-LAST:event_mnAltDelActionPerformed
 
     private void relatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioActionPerformed
-        Relatorio.getRelatorio(bda, bdc, bdl, bdv).setVisible(true);
+        Relatorio.getRelatorio().setVisible(true);
     }//GEN-LAST:event_relatorioActionPerformed
 
     private void tabProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabProdMouseClicked

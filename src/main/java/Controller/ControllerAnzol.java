@@ -57,10 +57,18 @@ public class ControllerAnzol {
     public static void carregaTabela(DefaultTableModel modelo) {
         ProdutoDAO.carregaTabAnzol(modelo);
     }
+    
+    public static void carregaTabelaFull(DefaultTableModel modelo){
+        ProdutoDAO.carregaRelaAnzol(modelo);
+    }
      
     public static boolean cadastrarAnzol(Anzol a){
          return ProdutoDAO.cadPoduto(a);
     } 
+    
+    public static boolean verifica(Anzol a){
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "anzol");
+    }
     
     public static boolean excluir(Anzol a){
         return ProdutoDAO.drop(a);

@@ -16,6 +16,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControllerLinha {
     
+    public static boolean verifica(Linha a){
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "linha");
+    }
+    
     public static Linha atualizaLinha(Linha l) throws UniLotePeqException{
         Linha li = null;
         li = (Linha) ProdutoDAO.pesquisaProdID(l);
@@ -63,5 +67,9 @@ public class ControllerLinha {
     
     public static void carregaTabela(DefaultTableModel modelo) {
         ProdutoDAO.carregaTabLinha(modelo);
+    }
+    
+    public static void carregaTabelaFull(DefaultTableModel modelo) {
+        ProdutoDAO.carregaRelaLinha(modelo);
     }
 }

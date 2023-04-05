@@ -16,6 +16,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControllerCarretilha {
     
+    public static boolean verifica(Carretilha a){
+        return ProdutoDAO.pesquisarProdutoId(Integer.toString(a.getCodigoLote()), "carretilha");
+    }
+    
     public static Carretilha atualizaCarretilha(Carretilha c) throws UniLotePeqException{
         Carretilha ca = null;
         ca = (Carretilha) ProdutoDAO.pesquisaProdID(c);
@@ -55,6 +59,10 @@ public class ControllerCarretilha {
     
     public static void carregaTabela(DefaultTableModel modelo) {
         ProdutoDAO.carregaTabCarretilha(modelo);
+    }
+    
+    public static void carregaTabelaFull(DefaultTableModel modelo) {
+        ProdutoDAO.carregaRelaCar(modelo);
     }
     
     public static boolean cadastrarCar(Carretilha c){

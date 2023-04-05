@@ -6,6 +6,8 @@ package Model;
 
 import Dao.ConexaoBD;
 import Dao.ProdutoDAO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -13,7 +15,7 @@ import Dao.ProdutoDAO;
  */
 public class teste {
     public static void main(String []args) throws UniLotePeqException{
-        ConexaoBD.conectaBD();
+        Connection conn = ConexaoBD.getConnection();
         Anzol a = new Anzol();
         a.setCodigoLote(1);
         a.setUnidadesLote(12);
@@ -23,6 +25,26 @@ public class teste {
         a.setTamanho(2);
         a.setUnidadesPacote(100);
         a.setFabri("1/1/1");
-        ProdutoDAO.cadPoduto(a);
+        
+        String query = "INSERT INTO anzol VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pstm;
+
+            try {
+                pstm = conn.prepareStatement(query);
+                pstm.setInt(1, a.getCodigoLote());
+                pstm.setInt(2, a.getUnidadesLote());
+                pstm.setString(3, a.getMarca());
+                pstm.setString(4, a.getModelo());
+                pstm.setDouble(5, a.getPreco());
+                pstm.setDouble(6, a.getTamanho());
+                pstm.setInt(7, a.getUnidadesPacote());
+                pstm.setString(8, a.getFabri());
+
+                pstm.execute();
+                pstm.close();
+
+            } catch (Exception erro) {
+                System.out.println("ERRO DAO " + erro);
+            }
     }
 }

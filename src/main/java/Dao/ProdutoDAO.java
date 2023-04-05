@@ -23,7 +23,7 @@ public class ProdutoDAO {
     
     public static boolean cadPoduto(Produto p) {
         Connection conn = ConexaoBD.getConnection();
-        if (p.getTipo().contains("ANZOL")) {
+        if (p.getClass().getSimpleName().equalsIgnoreCase("ANZOL")) {
             Anzol a = (Anzol) p;
             String query = "INSERT INTO anzol VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
@@ -48,7 +48,7 @@ public class ProdutoDAO {
                 System.out.println("ERRO DAO " + erro);
             }
         
-        } else if (p.getTipo().contains("CARRETILHA")) {
+        } else if (p.getClass().getSimpleName().equalsIgnoreCase("CARRETILHA")) {
             Carretilha c = (Carretilha) p;
             String query = "INSERT INTO atendente VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
@@ -60,7 +60,7 @@ public class ProdutoDAO {
                 pstm.setString(3, c.getMarca());
                 pstm.setString(4, c.getModelo());
                 pstm.setDouble(5, c.getPreco());
-                pstm.setDouble(6, c.getCapLinha());
+                pstm.setString(6, c.getCapLinha());
                 pstm.setInt(7, c.getQtdRolamento());
                 pstm.setString(8, c.getPerfil());
                 pstm.setString(9, c.getFabri());
@@ -74,7 +74,7 @@ public class ProdutoDAO {
                 System.out.println("ERRO DAO " + erro);
             }
 
-        } else if (p.getTipo().contains("LINHA")) {
+        } else if (p.getClass().getSimpleName().equalsIgnoreCase("LINHA")) {
             Linha l = (Linha) p;
             String query = "INSERT INTO enfermeira VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
@@ -86,9 +86,9 @@ public class ProdutoDAO {
                 pstm.setString(3, l.getMarca());
                 pstm.setString(4, l.getModelo());
                 pstm.setDouble(5, l.getPreco());
-                pstm.setDouble(6, l.getComprimento());
-                pstm.setDouble(7, l.getEspessura());
-                pstm.setDouble(8, l.getResistencia());
+                pstm.setString(6, l.getComprimento());
+                pstm.setString(7, l.getEspessura());
+                pstm.setString(8, l.getResistencia());
                 pstm.setString(9, l.getCor());
                 pstm.setString(10, l.getFabri());
 
@@ -101,7 +101,7 @@ public class ProdutoDAO {
                 System.out.println("ERRO DAO " + erro);
             }
             
-        } else if (p.getTipo().contains("VARA")) {
+        } else if (p.getClass().getSimpleName().equalsIgnoreCase("VARA")) {
             Vara v = (Vara) p;
             String query = "INSERT INTO medico VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
@@ -113,9 +113,9 @@ public class ProdutoDAO {
                 pstm.setString(3, v.getModelo());
                 pstm.setString(4, v.getMarca());
                 pstm.setDouble(5, v.getPreco());
-                pstm.setDouble(6, v.getTamanho());
+                pstm.setString(6, v.getTamanho());
                 pstm.setString(7, v.getAcao());
-                pstm.setDouble(8, v.getResistencia());
+                pstm.setString(8, v.getResistencia());
                 pstm.setString(9, v.getFabri());
              
                 pstm.execute();
@@ -133,7 +133,7 @@ public class ProdutoDAO {
       
     public static boolean alterarProduto(Produto p) {
         Connection conn = ConexaoBD.getConnection();
-        if (p.getTipo().contains("ANZOL")) {
+        if (p.getClass().getSimpleName().equalsIgnoreCase("ANZOL")) {
             Anzol a = (Anzol) p; 
             
             
@@ -161,7 +161,7 @@ public class ProdutoDAO {
                 System.out.println("ERRO DAO " + erro);
             }
         
-        } else if (p.getTipo().contains("CARRETILHA")) {
+        } else if (p.getClass().getSimpleName().equalsIgnoreCase("CARRETILHA")) {
             Carretilha c = (Carretilha) p;
             String query = "UPDATE carretilha set uniLoteCar = ?, marcaCar = ?, modeloCar = ?, precoCar = ?, capLinhaCar = ?, qtdRolCar = ?, perfilCar = ?, fabriCar = ? WHERE idLoteCar = ?";
             PreparedStatement pstm;
@@ -173,7 +173,7 @@ public class ProdutoDAO {
                 pstm.setString(2, c.getMarca());
                 pstm.setString(3, c.getModelo());
                 pstm.setDouble(4, c.getPreco());
-                pstm.setDouble(5, c.getCapLinha());
+                pstm.setString(5, c.getCapLinha());
                 pstm.setInt(6, c.getQtdRolamento());
                 pstm.setString(7, c.getPerfil());
                 pstm.setString(8, c.getFabri());
@@ -188,7 +188,7 @@ public class ProdutoDAO {
                 System.out.println("ERRO DAO " + erro);
             }
 
-        } else if (p.getTipo().contains("LINHA")) {
+        } else if (p.getClass().getSimpleName().equalsIgnoreCase("LINHA")) {
             Linha l = (Linha) p;
             String query = "UPDATE linha set uniLoteLinha = ?, marcaLinha = ?, modeloLinha = ?, precoLinha = ?, compriLinha = ?, espLinha = ?, resisLinha = ?, corLinha = ?, fabriLinha = ? WHERE idLoteLinha = ?";
             PreparedStatement pstm;
@@ -200,9 +200,9 @@ public class ProdutoDAO {
                 pstm.setString(2, l.getMarca());
                 pstm.setString(3, l.getModelo());
                 pstm.setDouble(4, l.getPreco());
-                pstm.setDouble(5, l.getComprimento());
-                pstm.setDouble(6, l.getEspessura());
-                pstm.setDouble(7, l.getResistencia());
+                pstm.setString(5, l.getComprimento());
+                pstm.setString(6, l.getEspessura());
+                pstm.setString(7, l.getResistencia());
                 pstm.setString(8, l.getCor());
                 pstm.setString(9, l.getFabri());
                 pstm.setInt(10, l.getCodigoLote());
@@ -216,7 +216,7 @@ public class ProdutoDAO {
                 System.out.println("ERRO DAO " + erro);
             }
             
-        } else if (p.getTipo().contains("VARA")) {
+        } else if (p.getClass().getSimpleName().equalsIgnoreCase("VARA")) {
             Vara v = (Vara) p;
             String query = "UPDATE vara set uniLoteVara = ?, modeloVara = ?, marcaVara = ?, precoVara = ?, tamVara = ?, acaoVara = ?, resisVara = ?, fabriVara = ? WHERE idLoteVara = ?";
             PreparedStatement pstm;
@@ -229,9 +229,9 @@ public class ProdutoDAO {
                 pstm.setString(2, v.getModelo());
                 pstm.setString(3, v.getMarca());
                 pstm.setDouble(4, v.getPreco());
-                pstm.setDouble(5, v.getTamanho());
+                pstm.setString(5, v.getTamanho());
                 pstm.setString(6, v.getAcao());
-                pstm.setDouble(7, v.getResistencia());
+                pstm.setString(7, v.getResistencia());
                 pstm.setString(8, v.getFabri());
                 pstm.setInt(9, v.getCodigoLote());
                                 

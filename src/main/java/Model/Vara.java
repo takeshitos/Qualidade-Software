@@ -30,7 +30,7 @@ final public class Vara extends Produto{
 		this.resistencia = resistencia;
 	}
 	//Polimorfismo por sobrescrita
-	public String mostraClasse(){
+	public String getTipo(){
 		return "VARA";
 	}
 	

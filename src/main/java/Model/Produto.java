@@ -63,5 +63,5 @@ abstract public class Produto{
 	public float precoDesconto(){
 		return (float) (preco*0.9);
 	}
-	abstract String mostraClasse();
+	
 }

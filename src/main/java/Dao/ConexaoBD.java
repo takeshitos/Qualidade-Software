@@ -49,7 +49,7 @@ public class ConexaoBD {
 
     public static void conectaBD() {
         try {
-            String url = "jdbc:mysql://localhost:3306/pescadb?user=adm&password=12345678";
+            String url = "jdbc:mysql://localhost:3306/pescadb?user=root&password=root";
             conn = DriverManager.getConnection(url);
             System.out.println("CONECTADO COM SUCESSO!");
 

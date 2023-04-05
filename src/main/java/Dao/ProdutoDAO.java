@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -449,5 +450,25 @@ public class ProdutoDAO {
         }else{
             return false;
         }
+    }
+    
+    public static void carregaTabAnzol(DefaultTableModel modelo) {
+        ResultSet rs = null;
+        
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM anzol");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    rs.getInt("idLoteAnzol"),
+                    rs.getInt("uniLoteAnzol"), 
+                    rs.getString("modeloAnzol")
+                }); 
+            }
+
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        
     }
 }

@@ -1,6 +1,8 @@
 package View;
 
 
+import Controller.ControllerAnzol;
+import Dao.ProdutoDAO;
 import Model.BdAnzol;
 import Model.UniLotePeqException;
 import Model.Anzol;
@@ -326,14 +328,16 @@ public class CadAnzol extends javax.swing.JFrame {
     
     public void listaTab(){
         DefaultTableModel modelo = (DefaultTableModel) tbAnzol.getModel();
+        modelo.setNumRows(0);
         
-        int posLin = 0;
+        ControllerAnzol.carregaTabela(modelo);
+     /*   int posLin = 0;
         modelo.setRowCount(posLin);
         
         for(Anzol a : gp.getBdAnzol()){
             modelo.insertRow(posLin, new Object[]{a.getCodigoLote(), a.getUnidadesLote(), a.getModelo()});
             posLin++;
-        }
+        }*/
     }
     
     public int cadAnzol(){
@@ -360,13 +364,11 @@ public class CadAnzol extends javax.swing.JFrame {
         a1.setPreco(Float.valueOf(jtPreco.getText()));
         a1.setTamanho(Integer.parseInt(jtTamanho.getText()));
         a1.setUnidadesPacote(Integer.parseInt(jtUnidadesPacote.getText()));
-        a1.getFabri().setDia(Integer.parseInt(jtDia.getText()));
-        a1.getFabri().setMes(Integer.parseInt(jtMes.getText()));
-        a1.getFabri().setAno(Integer.parseInt(jtAno.getText()));
+        a1.setFabri(jtDia.getText()+"/"+jtMes.getText()+"/"+jtAno.getText());
         
-        a1 = gp.cadAnzol(a1);
+        boolean feed = ProdutoDAO.cadPoduto(a1);
        
-       if(a1 != null){
+       if(feed){
                 JOptionPane.showMessageDialog(
                     null,
                     "Produto cadastrada com sucesso!",

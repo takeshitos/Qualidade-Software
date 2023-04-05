@@ -51,7 +51,7 @@ public class ProdutoDAO {
         
         } else if (p.getClass().getSimpleName().equalsIgnoreCase("CARRETILHA")) {
             Carretilha c = (Carretilha) p;
-            String query = "INSERT INTO atendente VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO carretilha VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
 
             try {           
@@ -77,7 +77,7 @@ public class ProdutoDAO {
 
         } else if (p.getClass().getSimpleName().equalsIgnoreCase("LINHA")) {
             Linha l = (Linha) p;
-            String query = "INSERT INTO enfermeira VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO linha VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
 
             try {           
@@ -104,7 +104,7 @@ public class ProdutoDAO {
             
         } else if (p.getClass().getSimpleName().equalsIgnoreCase("VARA")) {
             Vara v = (Vara) p;
-            String query = "INSERT INTO medico VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO vara VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstm;
 
             try {           
@@ -532,20 +532,72 @@ public class ProdutoDAO {
         
     }
     
-    public static void carregaTabTotal(DefaultTableModel modelo) {
-        ResultSet rs = null;
-        
+    public static void carregaTabAltDel(DefaultTableModel modelo) {
+        ResultSet rs = null;       
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM anzol");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "ANZOL",
+                    rs.getInt("idLoteAnzol"),
+                    rs.getInt("uniLoteAnzol"), 
+                    rs.getString("marcaAnzol"),
+                    rs.getString("modeloAnzol"),
+                    rs.getString("precoAnzol")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        rs = null;   
         try{
             rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM carretilha");
 
             while(rs.next()){
                 modelo.addRow(new Object[]{
+                    "CARRETILHA",
                     rs.getInt("idLoteCar"),
                     rs.getInt("uniLoteCar"), 
-                    rs.getString("modeloCar")
+                    rs.getString("marcaCar"),
+                    rs.getString("modeloCar"),
+                    rs.getString("precoCar")
                 }); 
             }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        rs = null;  
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM linha");
 
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "LINHA",
+                    rs.getInt("idLoteLinha"),
+                    rs.getInt("uniLoteLinha"), 
+                    rs.getString("marcaLinha"),
+                    rs.getString("modeloLinha"),
+                    rs.getString("precoLinha")
+                }); 
+            }
+        }catch(Exception e){
+            System.out.println("Erro ao puxar tabela consulta");
+        }
+        rs = null;  
+        try{
+            rs = ConexaoBD.getConexao().executarQueryBD("SELECT * FROM vara");
+
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                    "VARA",
+                    rs.getInt("idLoteVara"),
+                    rs.getInt("uniLoteVara"), 
+                    rs.getString("marcaVara"),
+                    rs.getString("modeloVara"),
+                    rs.getString("precoVara")
+                }); 
+            }
         }catch(Exception e){
             System.out.println("Erro ao puxar tabela consulta");
         }

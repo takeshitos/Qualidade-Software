@@ -331,13 +331,7 @@ public class CadAnzol extends javax.swing.JFrame {
         modelo.setNumRows(0);
         
         ControllerAnzol.carregaTabela(modelo);
-     /*   int posLin = 0;
-        modelo.setRowCount(posLin);
-        
-        for(Anzol a : gp.getBdAnzol()){
-            modelo.insertRow(posLin, new Object[]{a.getCodigoLote(), a.getUnidadesLote(), a.getModelo()});
-            posLin++;
-        }*/
+
     }
     
     public int cadAnzol(){
@@ -366,7 +360,7 @@ public class CadAnzol extends javax.swing.JFrame {
         a1.setUnidadesPacote(Integer.parseInt(jtUnidadesPacote.getText()));
         a1.setFabri(jtDia.getText()+"/"+jtMes.getText()+"/"+jtAno.getText());
         
-        boolean feed = ProdutoDAO.cadPoduto(a1);
+        boolean feed = ControllerAnzol.cadastrarAnzol(a1);
        
        if(feed){
                 JOptionPane.showMessageDialog(

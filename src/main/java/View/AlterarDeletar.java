@@ -3,6 +3,9 @@ package View;
 
 import Controller.ControllerAnzol;
 import Controller.ControllerCarretilha;
+import Controller.ControllerLinha;
+import Controller.ControllerProduto;
+import Controller.ControllerVara;
 import Model.BdCarretilha;
 import Model.Carretilha;
 import Model.BdVara;
@@ -12,6 +15,8 @@ import Model.BdLinha;
 import Model.Vara;
 import Model.Anzol;
 import Model.UniLotePeqException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -310,7 +315,11 @@ public class AlterarDeletar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAnzolAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnzolAltActionPerformed
-        altAnzol();
+        try {
+            altAnzol();
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(AlterarDeletar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btAnzolAltActionPerformed
 
     private void jtCodigoDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoDelActionPerformed
@@ -335,15 +344,27 @@ public class AlterarDeletar extends javax.swing.JFrame {
     }//GEN-LAST:event_btAnzolDelActionPerformed
 
     private void btCarretilhaAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCarretilhaAltActionPerformed
-        altCarretilha();
+        try {
+            altCarretilha();
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(AlterarDeletar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btCarretilhaAltActionPerformed
 
     private void btLinhaAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLinhaAltActionPerformed
-        altLinha();
+        try {
+            altLinha();
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(AlterarDeletar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btLinhaAltActionPerformed
 
     private void btVaraAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVaraAltActionPerformed
-        altVara();
+        try {
+            altVara();
+        } catch (UniLotePeqException ex) {
+            Logger.getLogger(AlterarDeletar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btVaraAltActionPerformed
 
     private void btCarretilhaDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCarretilhaDelActionPerformed
@@ -370,39 +391,15 @@ public class AlterarDeletar extends javax.swing.JFrame {
         
         modelo.setNumRows(0);
         
-        ControllerAnzol.carregaTabela(modelo);
-        /*
-        int posLin = 0;
-        modelo.setRowCount(posLin);
-        
-        for(Anzol a : bda.getBdAnzol()){
-            modelo.insertRow(posLin, new Object[]{a.mostraClasse(), a.getCodigoLote(), a.getUnidadesLote(),a.getMarca(),a.getModelo(), a.getPreco()});
-            posLin++;
-        }
-        
-        posLin = 0;
-        
-        for(Carretilha c : bdc.getBdCarretilha()){
-            modelo.insertRow(posLin, new Object[]{c.mostraClasse(), c.getCodigoLote(), c.getUnidadesLote(),c.getMarca(),c.getModelo(), c.getPreco()});
-            posLin++;
-        }
-        posLin = 0;
-        for(Linha l : bdl.getBdLinha()){
-            modelo.insertRow(posLin, new Object[]{l.mostraClasse(), l.getCodigoLote(), l.getUnidadesLote(),l.getMarca(),l.getModelo(),l.getPreco()});
-            posLin++;
-        }
-        posLin = 0;
-        for(Vara v : bdv.getBdVara()){
-            modelo.insertRow(posLin, new Object[]{v.mostraClasse(), v.getCodigoLote(), v.getUnidadesLote(),v.getMarca(),v.getModelo(), v.getPreco()});
-            posLin++;
-        }*/
+        ControllerProduto.carregaTabela(modelo);
+       
     }
     
-    public void altAnzol(){
+    public void altAnzol() throws UniLotePeqException{
       a = new Anzol();
       a.setCodigoLote(Integer.parseInt(jtCodigoAlt.getText()));
       
-      a = bda.atualizaAnzol(a);
+      a = ControllerAnzol.atualizaAnzol(a);
        
       if(a != null){
             JOptionPane.showMessageDialog(
@@ -450,11 +447,11 @@ public class AlterarDeletar extends javax.swing.JFrame {
       limpar();
     }
     
-    public void altLinha(){
+    public void altLinha() throws UniLotePeqException{
       l = new Linha();
       l.setCodigoLote(Integer.parseInt(jtCodigoAlt.getText()));
       
-      l = bdl.atualizaLinha(l);
+      l = ControllerLinha.atualizaLinha(l);
        
       if(l != null){
             JOptionPane.showMessageDialog(
@@ -476,11 +473,11 @@ public class AlterarDeletar extends javax.swing.JFrame {
       limpar();
     }
     
-    public void altVara(){
+    public void altVara() throws UniLotePeqException{
       v = new Vara();
       v.setCodigoLote(Integer.parseInt(jtCodigoAlt.getText()));
       
-      v = bdv.atualizaVara(v);
+      v = ControllerVara.atualizaVara(v);
        
       if(v != null){
             JOptionPane.showMessageDialog(
@@ -507,9 +504,9 @@ public class AlterarDeletar extends javax.swing.JFrame {
       a = new Anzol();
       a.setCodigoLote(Integer.parseInt(jtCodigoDel.getText()));
       
-      a = bda.consAnzol(a);
+      boolean feed = ControllerAnzol.excluir(a);
        
-      if(a != null){
+      if(feed){
             a = bda.removeAnzol(a);
       }
       else{
@@ -528,9 +525,9 @@ public class AlterarDeletar extends javax.swing.JFrame {
       c = new Carretilha();
       c.setCodigoLote(Integer.parseInt(jtCodigoDel.getText()));
       
-      c = bdc.consCarretilha(c);
+      boolean feed = ControllerCarretilha.excluir(c);
        
-      if(c != null){
+      if(feed){
             c = bdc.removeCarretilha(c);
       }
       else{
@@ -549,9 +546,9 @@ public class AlterarDeletar extends javax.swing.JFrame {
       l = new Linha();
       l.setCodigoLote(Integer.parseInt(jtCodigoDel.getText()));
       
-      l = bdl.consLinha(l);
+      boolean feed = ControllerLinha.excluir(l);
        
-      if(l != null){
+      if(feed){
             l = bdl.removeLinha(l);
       }
       else{
@@ -570,9 +567,9 @@ public class AlterarDeletar extends javax.swing.JFrame {
       v = new Vara();
       v.setCodigoLote(Integer.parseInt(jtCodigoDel.getText()));
       
-      v = bdv.consVara(v);
+      boolean feed = ControllerVara.excluir(v);
        
-      if(v != null){
+      if(feed){
             v = bdv.removeVara(v);
       }
       else{

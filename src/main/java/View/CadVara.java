@@ -1,6 +1,8 @@
 package View;
 
 
+import Controller.ControllerCarretilha;
+import Controller.ControllerVara;
 import Model.BdVara;
 import Model.UniLotePeqException;
 import Model.Vara;
@@ -325,14 +327,10 @@ public class CadVara extends javax.swing.JFrame {
     
     public void listaTab(){
         DefaultTableModel modelo = (DefaultTableModel) tbVara.getModel();
+
+        modelo.setNumRows(0);
         
-        int posLin = 0;
-        modelo.setRowCount(posLin);
-        
-        for(Vara v : gp.getBdVara()){
-            modelo.insertRow(posLin, new Object[]{v.getCodigoLote(), v.getUnidadesLote(), v.getModelo()});
-            posLin++;
-        }
+        ControllerVara.carregaTabela(modelo);
     }
     
     public int cadVara(){
@@ -357,16 +355,14 @@ public class CadVara extends javax.swing.JFrame {
         v.setMarca(jtMarca.getText());
         v.setModelo(jtModelo.getText());
         v.setPreco(Float.valueOf(jtPreco.getText()));
-        v.setTamanho(Float.valueOf(jtTamanho.getText()));  
+        v.setTamanho(jtTamanho.getText());  
         v.setAcao(jtAcao.getText());
-        v.setResistencia(Integer.parseInt(jtResistencia.getText()));
-        v.getFabri().setDia(Integer.parseInt(jtDia.getText()));
-        v.getFabri().setMes(Integer.parseInt(jtMes.getText()));
-        v.getFabri().setAno(Integer.parseInt(jtAno.getText()));
+        v.setResistencia(jtResistencia.getText());
+        v.setFabri(jtDia.getText()+"/"+jtMes.getText()+"/"+jtAno.getText());
         
-        v = gp.cadVara(v);
+        boolean feed = ControllerVara.cadastrarVara(v);
        
-       if(v != null){
+       if(feed){
                 JOptionPane.showMessageDialog(
                     null,
                     "Produto cadastrada com sucesso!",

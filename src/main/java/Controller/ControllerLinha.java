@@ -5,7 +5,7 @@
 package Controller;
 
 import Dao.ProdutoDAO;
-import Model.Carretilha;
+import Model.Linha;
 import Model.UniLotePeqException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,13 +14,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ricar
  */
-public class ControllerCarretilha {
+public class ControllerLinha {
     
-    public static Carretilha atualizaCarretilha(Carretilha c) throws UniLotePeqException{
-        Carretilha ca = null;
-        ca = (Carretilha) ProdutoDAO.pesquisaProdID(c);
+    public static Linha atualizaLinha(Linha l) throws UniLotePeqException{
+        Linha li = null;
+        li = (Linha) ProdutoDAO.pesquisaProdID(l);
         
-        if(ca!=null){            
+        if(li!=null){            
             int uni = Integer.parseInt(JOptionPane.showInputDialog(null,
                                         "Informe as Unidades do Lote:", 
                                         "Autalização", 
@@ -31,14 +31,14 @@ public class ControllerCarretilha {
                                         "Autalização", 
                                         JOptionPane.QUESTION_MESSAGE));
             try{
-                 ca.setPreco(preco);
-                 ca.setUnidadesLote(uni);
-                 ProdutoDAO.alterarProduto(ca);                    
+                 li.setPreco(preco);
+                 li.setUnidadesLote(uni);
+                 ProdutoDAO.alterarProduto(li);                    
             }
             catch(UniLotePeqException upe){
                 upe.impUniLotePeq();
-                ca = upe.corrigeUniLotePeq(ca);
-                ProdutoDAO.alterarProduto(ca);
+                li = upe.corrigeUniLotePeq(li);
+                ProdutoDAO.alterarProduto(li);  
             }
             catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(
@@ -48,20 +48,20 @@ public class ControllerCarretilha {
                         0
                 );
             }
-            return ca;
+            return li;
         }          
         return null;
     }
+        
+    public static boolean cadastrarLinha(Linha a){
+         return ProdutoDAO.cadPoduto(a);
+    } 
+    
+    public static boolean excluir(Linha a){
+        return ProdutoDAO.drop(a);
+    }
     
     public static void carregaTabela(DefaultTableModel modelo) {
-        ProdutoDAO.carregaTabCarretilha(modelo);
-    }
-    
-    public static boolean cadastrarCar(Carretilha c){
-        return ProdutoDAO.cadPoduto(c);
-    }
-    
-     public static boolean excluir(Carretilha a){
-        return ProdutoDAO.drop(a);
+        ProdutoDAO.carregaTabLinha(modelo);
     }
 }

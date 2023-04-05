@@ -5,8 +5,8 @@
 package Controller;
 
 import Dao.ProdutoDAO;
-import Model.Carretilha;
 import Model.UniLotePeqException;
+import Model.Vara;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,13 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ricar
  */
-public class ControllerCarretilha {
-    
-    public static Carretilha atualizaCarretilha(Carretilha c) throws UniLotePeqException{
-        Carretilha ca = null;
-        ca = (Carretilha) ProdutoDAO.pesquisaProdID(c);
+public class ControllerVara {
+    public static Vara atualizaVara(Vara v) throws UniLotePeqException{
+        Vara va = null;
+        va = (Vara) ProdutoDAO.pesquisaProdID(v);
         
-        if(ca!=null){            
+        if(va!=null){            
             int uni = Integer.parseInt(JOptionPane.showInputDialog(null,
                                         "Informe as Unidades do Lote:", 
                                         "Autalização", 
@@ -30,15 +29,15 @@ public class ControllerCarretilha {
                                         "Informe o novo preço:", 
                                         "Autalização", 
                                         JOptionPane.QUESTION_MESSAGE));
-            try{
-                 ca.setPreco(preco);
-                 ca.setUnidadesLote(uni);
-                 ProdutoDAO.alterarProduto(ca);                    
+            try{             
+                 va.setPreco(preco);
+                 va.setUnidadesLote(uni);
+                 ProdutoDAO.alterarProduto(va);                    
             }
             catch(UniLotePeqException upe){
                 upe.impUniLotePeq();
-                ca = upe.corrigeUniLotePeq(ca);
-                ProdutoDAO.alterarProduto(ca);
+                va = upe.corrigeUniLotePeq(va);
+                ProdutoDAO.alterarProduto(va); 
             }
             catch(NumberFormatException nfe){
                 JOptionPane.showMessageDialog(
@@ -48,20 +47,20 @@ public class ControllerCarretilha {
                         0
                 );
             }
-            return ca;
+            return va;
         }          
         return null;
     }
     
+    public static boolean cadastrarVara(Vara a){
+         return ProdutoDAO.cadPoduto(a);
+    } 
+    
     public static void carregaTabela(DefaultTableModel modelo) {
-        ProdutoDAO.carregaTabCarretilha(modelo);
+        ProdutoDAO.carregaTabVara(modelo);
     }
     
-    public static boolean cadastrarCar(Carretilha c){
-        return ProdutoDAO.cadPoduto(c);
-    }
-    
-     public static boolean excluir(Carretilha a){
+     public static boolean excluir(Vara a){
         return ProdutoDAO.drop(a);
     }
 }

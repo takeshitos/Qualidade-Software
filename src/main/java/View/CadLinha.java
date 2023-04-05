@@ -1,6 +1,8 @@
 package View;
 
 
+import Controller.ControllerCarretilha;
+import Controller.ControllerLinha;
 import Model.Linha;
 import Model.BdLinha;
 import Model.UniLotePeqException;
@@ -351,14 +353,10 @@ public class CadLinha extends javax.swing.JFrame {
     
     public void listaTab(){
         DefaultTableModel modelo = (DefaultTableModel) tbLinha.getModel();
+
+        modelo.setNumRows(0);
         
-        int posLin = 0;
-        modelo.setRowCount(posLin);
-        
-        for(Linha l : gp.getBdLinha()){
-            modelo.insertRow(posLin, new Object[]{l.getCodigoLote(), l.getUnidadesLote(), l.getModelo()});
-            posLin++;
-        }
+        ControllerLinha.carregaTabela(modelo);
     }
     
     public int cadLinha(){
@@ -383,17 +381,15 @@ public class CadLinha extends javax.swing.JFrame {
         l.setMarca(jtMarca.getText());
         l.setModelo(jtModelo.getText());
         l.setPreco(Float.valueOf(jtPreco.getText()));
-        l.setComprimento(Integer.parseInt(jtComprimento.getText()));
-        l.setEspessura(Float.valueOf(jtEspessura.getText()));
-        l.setResistencia(Integer.parseInt(jtResistencia.getText()));
+        l.setComprimento((jtComprimento.getText()));
+        l.setEspessura(jtEspessura.getText());
+        l.setResistencia((jtResistencia.getText()));
         l.setCor(jtCor.getText());
-        l.getFabri().setDia(Integer.parseInt(jtDia.getText()));
-        l.getFabri().setMes(Integer.parseInt(jtMes.getText()));
-        l.getFabri().setAno(Integer.parseInt(jtAno.getText()));
+        l.setFabri(jtDia.getText()+"/"+jtMes.getText()+"/"+jtAno.getText());
         
-        l = gp.cadLinha(l);
+        boolean feed = ControllerLinha.cadastrarLinha(l);
        
-       if(l != null){
+       if(feed){
                 JOptionPane.showMessageDialog(
                     null,
                     "Produto cadastrada com sucesso!",

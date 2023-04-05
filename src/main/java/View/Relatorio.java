@@ -25,11 +25,8 @@ public class Relatorio extends javax.swing.JFrame {
     private static BdLinha bdl = new BdLinha();
     private static BdVara bdv = new BdVara();
 
-    public static Relatorio getRelatorio(BdAnzol bda1, BdCarretilha bdc1, BdLinha bdl1, BdVara bdv1){
-        bda = bda1;
-        bdc = bdc1;
-        bdl = bdl1;
-        bdv = bdv1;
+    public static Relatorio getRelatorio(){
+
         if(unicoRelatorio== null){
             unicoRelatorio = new Relatorio();
         }
@@ -37,6 +34,7 @@ public class Relatorio extends javax.swing.JFrame {
     }
     private Relatorio() {
         initComponents();
+        this.setExtendedState(Relatorio.MAXIMIZED_BOTH);
     }
     
     @SuppressWarnings("unchecked")
